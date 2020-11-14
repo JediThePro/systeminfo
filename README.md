@@ -1,75 +1,28 @@
 <p align="center">
-  <a href="https://systeminformation.io/">
     <img src="https://systeminformation.io/assets/logo_inv.png" alt="systeminformation logo" width="102" height="72">
-  </a>
 </p>
 
-<h3 align="center">systeminformation</h3>
+<code><h3 align="center">system-info</h3></code>
 
 <p align="center">
-  System and OS information library for node.js
-  <br>
-  <a href="https://systeminformation.io/"><strong>Explore Systeminformation docs »</strong></a>
-  <br>
-  <br>
-  <a href="https://github.com/sebhildebrandt/systeminformation/issues/new?template=bug_report.md">Report bug</a>
-  ·
-  <a href="https://github.com/sebhildebrandt/systeminformation/issues/new?template=feature_request.md&labels=feature">Request feature</a>
-  ·
-  <a href="https://github.com/sebhildebrandt/systeminformation/blob/master/CHANGELOG.md">Changelog</a>
+  System and OS information library for Node.js, and SystemInfo API
 </p>
-
-  [![NPM Version][npm-image]][npm-url]
-  [![NPM Downloads][downloads-image]][downloads-url]
-  [![Git Issues][issues-img]][issues-url]
-  [![Closed Issues][closed-issues-img]][closed-issues-url]
-  [![deps status][daviddm-img]][daviddm-url]
-  [![Code Quality: Javascript][lgtm-badge]][lgtm-badge-url]
-  [![Total alerts][lgtm-alerts]][lgtm-alerts-url]
-  [![Caretaker][caretaker-image]][caretaker-url]
-  [![Sponsoring][sponsor-badge]][sponsor-url]
-  [![MIT license][license-img]][license-url]
-
-This is amazing. Started as a small project just for myself, it now has > 10,000 lines of code, > 350 versions published, up to 2 mio downloads per month, > 20 mio downloads overall. Thank you to all who contributed to this project!
-
-## New Version 4.0
-
-This next major version release 4.0 comes with several optimizations and changes:
-
-- new systeminformation website with better documentation and examples [systeminformation.io][systeminformation-url]
-- added typescript definitions
-- reworked network section: this will now return more information and allows getting networkStats for more than one interface at once.
-- dockerContainerStats for multiple containers or all containers at once
-- optimized graphics controller and display detection
-- added wifiNetworks to get available Wi-Fi networks
-- added vboxInfo to get detailed vm information
-- added chassis information
-- better Raspberry-PI detection
-- lot of minor improvements
-
-Breaking Changes in version 4: you will see some minor breaking changes. Read the [detailed changelog][changelog-url].
-
-## Upcoming
-
-**MacOS on ARM, Windows on ARM**: November 11th 2020 - We will have a closer look on that! As soon as we have the new hardware here, will definitely work on support for those platforms.
-
-**Version 5**: we are planning a new major version with some minor breaking changes and some additional features. Will try to make this available Q1 of 2021.
 
 ## Quick Start
 
 Lightweight collection of 40+ functions to retrieve detailed hardware, system and OS information.
 
-- simple to use
-- get detailed information about system, cpu, baseboard, battery, memory, disks/filesystem, network, docker, software, services and processes
-- supports Linux, macOS, partial Windows, FreeBSD, OpenBSD, NetBSD and SunOS support
-- no npm dependencies (for production)
+- Simple to use
+- Get detailed information about system, cpu, baseboard, battery, memory, disks/filesystem, network, docker, software, services and processes
+- Supports Linux, macOS, partial Windows, FreeBSD, OpenBSD, NetBSD and SunOS support
+- No npm dependencies (for production)
 
 **Attention**: this is a `node.js` library. It is supposed to be used as a backend/server-side library and will definitely not work within a browser.
 
 ### Installation
 
 ```bash
-$ npm install systeminformation --save
+$ npm install system-info --save
 ```
 
 ### Usage
@@ -77,44 +30,13 @@ $ npm install systeminformation --save
 All functions (except `version` and `time`) are implemented as asynchronous functions. Here a small example how to use them:
 
 ```js
-const si = require('systeminformation');
+const si = require('system-info');
 
 // promises style - new since version 3
 si.cpu()
   .then(data => console.log(data))
   .catch(error => console.error(error));
 ```
-
-**Callback, Promises, Async / Await**
-
-## News and Changes
-
-### Latest Activity
-
-(last 7 major and minor version releases)
-
-- Version 4.30.0: `get()` added possibility to provide parameters
-- Version 4.29.0: `fsSize()` correct fs type detection macOS (HFS, APFS, NFS)
-- Version 4.28.0: `graphics()` added deviceName (Windows)
-- Version 4.27.0: `observe()` added observe / watch function
-- Version 4.26.0: `diskLayout()` added full S.M.A.R.T data (Linux)
-- Version 4.25.0: `get()` added function to get partial system info
-- Version 4.24.0: `networkInterfaces()` added subnet mask ip4 and ip6
-- Version 4.23.0: `versions()` added param to specify which program/lib versions to detect
-- ...
-
-You can find all changes here: [detailed changelog][changelog-url]
-
-## Core concept
-
-[Node.js][nodejs-url] comes with some basic OS information, but I always wanted a little more. So I came up to write this little library. This library is still work in progress. It is supposed to be used as a backend/server-side library (will definitely not work within a browser). It requires node.js version 4.0 and above.
-
-I was able to test it on several Debian, Raspbian, Ubuntu distributions as well as macOS (Mavericks, Yosemite, El Captain, Sierra, High Sierra, Mojave) and some Windows 7, Windows 10, FreeBSD, OpenBSD, NetBSD and SunOS machines. Not all functions are supported on all operating systems. Have a look at the function reference in the docs to get further details.
-
-If you have comments, suggestions & reports, please feel free to contact me!
-
-I also created a nice little command line tool called [mmon][mmon-github-url] (micro-monitor) for Linux and macOS, also available via [github][mmon-github-url] and [npm][mmon-npm-url]
-
 
 ## Reference
 
@@ -658,7 +580,7 @@ Remember: all functions (except `version` and `time`) are implemented as asynchr
 **Callback Style**
 
 ```js
-const si = require('systeminformation');
+const si = require('system-info');
 
 si.cpu(function(data) {
   console.log('CPU Information:');
@@ -678,7 +600,7 @@ si.cpu(function(data) {
 When omitting callback parameter (cb), then you can use all function in a promise oriented way. All functions (except of `version` and `time`) are returning a promise, that you can consume:
 
 ```js
-const si = require('systeminformation');
+const si = require('system-info');
 
 si.cpu()
   .then(data => {
@@ -700,7 +622,7 @@ si.cpu()
 Since node v7.6 you can also use the `async` / `await` pattern. The above example would then look like this:
 
 ```js
-const si = require('systeminformation');
+const si = require('system-info');
 
 async function cpuData() {
   try {
@@ -762,7 +684,7 @@ The first time you are calling one of these functions, you will get `-1` for tra
 So basically, if you e.g. need a value for network stats every second, your code should look like this:
 
 ```js
-const si = require('systeminformation');
+const si = require('system-info');
 
 setInterval(function() {
   si.networkStats().then(data => {
@@ -772,50 +694,6 @@ setInterval(function() {
 ```
 
 Beginning with the second call, you get network transfer values per second.
-
-## Finding new issues
-
-I am happy to discuss any comments and suggestions. Please feel free to contact me if you see any possibility of improvement!
-
-
-## Comments
-
-If you have ideas or comments, please do not hesitate to contact me.
-
-
-Happy monitoring!
-
-Sincerely,
-
-Sebastian Hildebrandt, [+innovations](http://www.plus-innovations.com)
-
-## Credits
-
-Written by Sebastian Hildebrandt [sebhildebrandt](https://github.com/sebhildebrandt)
-
-#### Contributers
-
-- Guillaume Legrain [glegrain](https://github.com/glegrain)
-- Riccardo Novaglia [richy24](https://github.com/richy24)
-- Quentin Busuttil [Buzut](https://github.com/Buzut)
-- lapsio [lapsio](https://github.com/lapsio)
-- csy [csy](https://github.com/csy1983)
-- Tiago Roldão [tiagoroldao](https://github.com/tiagoroldao)
-- dragonjet [dragonjet](https://github.com/dragonjet)
-- Adam Reis [adamreisnz](https://github.com/adamreisnz)
-- Jimi M [ItsJimi](https://github.com/ItsJimi)
-- Git² [GitSquared](https://github.com/GitSquared)
-- weiyin [weiyin](https://github.com/weiyin)
-- Jorai Rijsdijk [Erackron](https://github.com/Erackron)
-- Rasmus Porsager [porsager](https://github.com/porsager)
-- Nathan Patten [nrpatten](https://github.com/nrpatten)
-- Juan Campuzano [juancampuzano](https://github.com/juancampuzano)
-- Ricardo Polo [ricardopolo](https://github.com/ricardopolo)
-- Miłosz Dźwigała [mily20001]https://github.com/mily20001
-
-OSX Temperature: credits here are going to:
-
-- Frank Stock [pcafstockf](https://github.com/pcafstockf) - for his work on [smc-code][smc-code-url]
 
 ## Copyright Information
 
@@ -828,67 +706,3 @@ NetBSD is a registered trademark of The NetBSD Foundation, Docker is a trademark
 Solaris, OpenSolaris and registered trademarks of Sun Microsystems.
 
 All other trademarks are the property of their respective owners.
-
-## License [![MIT license][license-img]][license-url]
-
->The [`MIT`][license-url] License (MIT)
->
->Copyright &copy; 2014-2020 Sebastian Hildebrandt, [+innovations](http://www.plus-innovations.com).
->
->Permission is hereby granted, free of charge, to any person obtaining a copy
->of this software and associated documentation files (the "Software"), to deal
->in the Software without restriction, including without limitation the rights
->to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
->copies of the Software, and to permit persons to whom the Software is
->furnished to do so, subject to the following conditions:
->
->The above copyright notice and this permission notice shall be included in
->all copies or substantial portions of the Software.
->
->THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
->IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
->FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
->AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
->LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
->OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
->THE SOFTWARE.
->
->Further details see [LICENSE](LICENSE) file.
-
-
-[npm-image]: https://img.shields.io/npm/v/systeminformation.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/systeminformation
-[downloads-image]: https://img.shields.io/npm/dm/systeminformation.svg?style=flat-square
-[downloads-url]: https://npmjs.org/package/systeminformation
-
-[lgtm-badge]: https://img.shields.io/lgtm/grade/javascript/g/sebhildebrandt/systeminformation.svg?style=flat-square
-[lgtm-badge-url]: https://lgtm.com/projects/g/sebhildebrandt/systeminformation/context:javascript
-[lgtm-alerts]: https://img.shields.io/lgtm/alerts/g/sebhildebrandt/systeminformation.svg?style=flat-square
-[lgtm-alerts-url]: https://lgtm.com/projects/g/sebhildebrandt/systeminformation/alerts
-
-[sponsor-badge]: https://img.shields.io/badge/-Buy%20me%20a%20coffee-blue?style=flat-square
-[sponsor-url]: https://www.buymeacoffee.com/systeminfo
-
-[license-url]: https://github.com/sebhildebrandt/systeminformation/blob/master/LICENSE
-[license-img]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
-[npmjs-license]: https://img.shields.io/npm/l/systeminformation.svg?style=flat-square
-[changelog-url]: https://github.com/sebhildebrandt/systeminformation/blob/master/CHANGELOG.md
-[caretaker-url]: https://github.com/sebhildebrandt
-[caretaker-image]: https://img.shields.io/badge/caretaker-sebhildebrandt-blue.svg?style=flat-square
-
-[nodejs-url]: https://nodejs.org/en/
-[docker-url]: https://www.docker.com/
-[systeminformation-url]: https://systeminformation.io
-
-[daviddm-img]: https://img.shields.io/david/sebhildebrandt/systeminformation.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/sebhildebrandt/systeminformation
-
-[issues-img]: https://img.shields.io/github/issues/sebhildebrandt/systeminformation.svg?style=flat-square
-[issues-url]: https://github.com/sebhildebrandt/systeminformation/issues
-[closed-issues-img]: https://img.shields.io/github/issues-closed-raw/sebhildebrandt/systeminformation.svg?style=flat-square&color=brightgreen
-[closed-issues-url]: https://github.com/sebhildebrandt/systeminformation/issues?q=is%3Aissue+is%3Aclosed
-
-[mmon-npm-url]: https://npmjs.org/package/mmon
-[mmon-github-url]: https://github.com/sebhildebrandt/mmon
-
-[smc-code-url]: https://github.com/pcafstockf/osx-temperature-sensor
